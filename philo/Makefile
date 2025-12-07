@@ -6,7 +6,7 @@
 #    By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/06 14:26:02 by mkitano           #+#    #+#              #
-#    Updated: 2025/12/06 14:35:12 by mkitano          ###   ########.fr        #
+#    Updated: 2025/12/07 17:47:58 by mkitano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ BIN_DIR = bin
 INCLUDE_DIR = include
 
 SRC_FILES = main.c \
+		utils.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o)) 
