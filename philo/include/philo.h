@@ -17,6 +17,9 @@
 # include <sys/time.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <boolstd.h>
 
+long	ft_atol(const char *str);
+bool	ft_is_number(char *str);
 
 #endif

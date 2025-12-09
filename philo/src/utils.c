@@ -36,3 +36,23 @@ long	ft_atol(const char *str)
 	}
 	return (signal * result);
 }
+
+bool	ft_is_number(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (false);
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	if (str[i] == '\0')
+		return (false);
+	while (str[i])
+	{
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (false);
+		i++;
+	}
+	return (true);
+}
