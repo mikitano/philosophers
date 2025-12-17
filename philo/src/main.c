@@ -14,10 +14,19 @@
 
 int	main(int ac, char **av)
 {
+	t_table	table;
+
 	if (ac != 5 || ac != 6)
 	{
-		printf("Argument Error\n");
+		printf(RED "Argument Error\n" RESET);
 		return (1);
+	}
+	else
+	{
+		parse_input(&table, av); //TODO
+		data_init(&table);  //TODO
+		dinner_start(&table); //TODO
+		clean(&table); //TODO
 	}
 	
 	return (0);
