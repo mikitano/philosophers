@@ -1,49 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/20 12:52:18 by mkitano           #+#    #+#             */
+/*   Updated: 2025/12/20 18:47:45 by mkitano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-static void	assing_forks(t_philo *philo, t_fork *forks, int philo_position)
-{
-	int	philo_nbr;
 
-	philo_nbr = philo->table->philo_nbr;
-	philo->second_fork = &forks[(philo_position + 1) % philo_nbr];
-	philo->first_fork = &fork[philo_position];
-	if ((philo->id % 2) == 0)
-	{
-		philo->first_fork = &fork[philo_position];
-		philo\->second_fork = &forks[(philo_position +1) % philo_nbr];
-	}
-}
-
-static	philo_init(t_table *table)
+bool	philo_init(t_table *table)
 {
 	int		i;
-	t_philo	*philo;
 
+	table->philos = ft_calloc(table->philo_nbr, sizeof(t_philo));
+	if (!table->philos)
+		return (false);
 	i = -1;
 	while (++i < table->philo_nbr)
 	{
-		philo = table->philos + i;
-		philo->id = i + 1;
-		philo->full = false;
-		philo->meals_count = 0;
-		philo->table = table;
-		assing_forks(philo, table->forks, i);
+		table->philos[i].id = i + 1;
+		table->philos[i].meals_count = 0;
+		table->philos[i].table = table;
+		table->philos[i].left_fork = &table->forks[i];
+		table->philos[i].right_fork = &table->forks[(i + 1) % table->philo_nbr];
+		if (pthread_mutex_init(&table->philos[i].eat_lock, NULL) != 0)
+		{
+			clean_philos(table->philos, i);
+			return (false);
+		}
 	}
-
+	return (true);
 }
 
-void	data_init(t_table *table)
+bool	forks_init(t_table *table)
 {
 	int	i;
 
-	i = 0;
 	table->end_sim = false;
-	table->philos = safe_malloc(sizeof (t_philo) * (table->philo_nbr));
-	table->forks = safe_malloc(sizeof (t_fork) * (table->philo_nbr))
-	while (i++ < table->philo_nbr)
+	table->forks = ft_calloc(table->philo_nbr, sizeof(t_mutex));
+	if (!table->forks)
+		return (false);
+	i = -1;
+	while (++i < table->forks)
 	{
-		safe_mutex_handler(&table->forks[i].fork, INIT);
-		table->forks[i].fork_id = i;
+		if (pthread_mutex_init(&table->forks[i], NULL) != 0)
+		{
+			clean_forks(table->forks, i);
+			return (false);
+		}
 	}
-	philo_init(table);
+	return (true);
 }

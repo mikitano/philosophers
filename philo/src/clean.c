@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   safe_functions.c                                   :+:      :+:    :+:   */
+/*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/20 15:08:46 by mkitano           #+#    #+#             */
-/*   Updated: 2025/12/20 15:44:38 by mkitano          ###   ########.fr       */
+/*   Created: 2025/12/20 18:23:40 by mkitano           #+#    #+#             */
+/*   Updated: 2025/12/20 18:46:49 by mkitano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	clean_philos(t_philo *philos, int i)
 {
-	void	*mem;
-	size_t	len;
+	while (i--)
+		pthread_mutex_destroy(&philos[i].eat_lock);
+	free(philos);
+}
 
-	if (size == 0 || count == 0)
-		return (malloc(1));
-	if (size && count > (size_t)-1 / size)
-		return (NULL);
-	len = count * size;
-	mem = malloc(len);
-	if (!mem)
-		return (NULL);
-	while (len--)
-		((unsigned char *)mem)[len] = '\0';
-	return (mem);
+void	clean_forks(t_mutex *forks, int i)
+{
+	while (i--)
+		pthread_mutex_destroy(&forks[i]);
+	free(forks);
 }
