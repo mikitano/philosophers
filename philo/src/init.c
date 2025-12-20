@@ -5,8 +5,13 @@ static void	assing_forks(t_philo *philo, t_fork *forks, int philo_position)
 	int	philo_nbr;
 
 	philo_nbr = philo->table->philo_nbr;
-	philo->right_fork = fork[philo_position];
-	philo -> left_fork = forks[(philo_position +1) % philo_nbr];
+	philo->second_fork = &forks[(philo_position + 1) % philo_nbr];
+	philo->first_fork = &fork[philo_position];
+	if ((philo->id % 2) == 0)
+	{
+		philo->first_fork = &fork[philo_position];
+		philo\->second_fork = &forks[(philo_position +1) % philo_nbr];
+	}
 }
 
 static	philo_init(t_table *table)
@@ -40,5 +45,5 @@ void	data_init(t_table *table)
 		safe_mutex_handler(&table->forks[i].fork, INIT);
 		table->forks[i].fork_id = i;
 	}
-	philo_init(table); //TODO	
+	philo_init(table);
 }

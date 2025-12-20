@@ -49,8 +49,8 @@ typedef struct s_philo
 	long		meals_count;
 	bool		full;
 	long		lst_meal_time;
-	t_fork		*left_fork;
-	t_fork		*right_fork;
+	t_fork		*first_fork;
+	t_fork		*second__fork;
 	pthread_t	thread_id;
 	t_table		*table;
 }				t_philo;
@@ -86,5 +86,7 @@ bool	parse_and_init(t_table *table,int ac, char **av);
 void	*safe_malloc(size_t bytes);
 void	safe_thread_handler(phtread_t *thread, void *(*foo)(void *), void *data, t_opcode opcode);
 void	safe_mutex_handler(t_mlx *mutex, t_opcode opcode);
+
+void	data_init(t_table *table);
 
 #endif
