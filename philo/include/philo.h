@@ -68,7 +68,23 @@ struct s_table
 	t_philo	*philos;
 }
 
+typedef enum e_opcode
+{
+	LOCK,
+	UNLOCK,
+	INIT,
+	DESTROY,
+	CREATE,
+	JOIN,
+	DETACH
+}			t_opcode;
+
 long	ft_atol(const char *str);
-bool	ft_is_number(char *str);
+
+bool	parse_and_init(t_table *table,int ac, char **av);
+
+void	*safe_malloc(size_t bytes);
+void	safe_thread_handler(phtread_t *thread, void *(*foo)(void *), void *data, t_opcode opcode);
+void	safe_mutex_handler(t_mlx *mutex, t_opcode opcode);
 
 #endif

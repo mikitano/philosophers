@@ -20,6 +20,9 @@ INCLUDE_DIR = include
 
 SRC_FILES = main.c \
 		utils.c \
+		parsing.c \
+		init.c \
+		safe_functions.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o)) 

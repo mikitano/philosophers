@@ -23,10 +23,11 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		parse_input(&table, av); //TODO
+		if (!parse_input(&table,ac, av))
+			return (1);
 		data_init(&table);  //TODO
-		dinner_start(&table); //TODO
-		clean(&table); //TODO
+	//	dinner_start(&table); //TODO
+	//	clean(&table); //TODO
 	}
 	
 	return (0);
