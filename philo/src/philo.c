@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   safe_functions.c                                   :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/20 15:08:46 by mkitano           #+#    #+#             */
-/*   Updated: 2025/12/20 15:44:38 by mkitano          ###   ########.fr       */
+/*   Created: 2025/12/21 09:49:27 by mkitano           #+#    #+#             */
+/*   Updated: 2025/12/21 11:07:40 by mkitano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	sleep_routine(time_t time, t_table *table)
 {
-	void	*mem;
-	size_t	len;
+	time_t	wakeup;
 
-	if (size == 0 || count == 0)
-		return (malloc(1));
-	if (size && count > (size_t)-1 / size)
-		return (NULL);
-	len = count * size;
-	mem = malloc(len);
-	if (!mem)
-		return (NULL);
-	while (len--)
-		((unsigned char *)mem)[len] = '\0';
-	return (mem);
+	wakeup = time_ms() + time;
+	while (wakeup > time_ms())
+	{
+		if (!is_sim_end())
+	}
 }
+
+void	philo_routine(void *data)

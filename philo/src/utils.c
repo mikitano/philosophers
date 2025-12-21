@@ -6,7 +6,7 @@
 /*   By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 16:19:07 by mkitano           #+#    #+#             */
-/*   Updated: 2025/12/20 19:12:12 by mkitano          ###   ########.fr       */
+/*   Updated: 2025/12/21 09:44:47 by mkitano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,24 @@ long	ft_atol(const char *str)
 	if (*str != '\0')
 		return (0);
 	return (result);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*mem;
+	size_t	len;
+
+	if (size == 0 || count == 0)
+		return (malloc(1));
+	if (size && count > (size_t)-1 / size)
+		return (NULL);
+	len = count * size;
+	mem = malloc(len);
+	if (!mem)
+		return (NULL);
+	while (len--)
+		((unsigned char *)mem)[len] = '\0';
+	return (mem);
 }
 
 time_t	time_ms(void)

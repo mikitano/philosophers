@@ -6,7 +6,7 @@
 /*   By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 16:00:18 by mkitano           #+#    #+#             */
-/*   Updated: 2025/12/20 19:05:25 by mkitano          ###   ########.fr       */
+/*   Updated: 2025/12/21 09:45:07 by mkitano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ long	ft_atol(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 
 bool	parse_and_init(t_table *table, int ac, char **av, int i);
-
 void	data_init(t_table *table);
 
 time_t	time_ms(void);
 
 void	clean_philos(t_philo *philos, int i);
 void	clean_forks(t_mutex *forks, int i);
+void	clean_table(t_table *table);
 
 #endif

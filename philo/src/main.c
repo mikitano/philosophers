@@ -6,7 +6,7 @@
 /*   By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 16:07:22 by mkitano           #+#    #+#             */
-/*   Updated: 2025/12/20 19:13:15 by mkitano          ###   ########.fr       */
+/*   Updated: 2025/12/21 10:49:21 by mkitano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,16 @@ static bool	sim_start(t_table *table)
 	return (true);
 }
 
-static void	sim_end(t_table *table)
+static void	sim_stop(t_table *table)
 {
+	int	i;
 
+	i = -1;
+	while (++i < table->philo_nbr)
+		pthread_join(table->philos[i].thread_id, NULL);
+	if (table->philo_nbr > 1)
+		pthread_join(table->monitor, NULL);
+	clean_table(&table);
 }
 
 int	main(int ac, char **av)
@@ -57,6 +64,5 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	if (!sim_start(table))
-	//	clean(&table); //TODO
-	return (0);
+		clean_table(&table);
 }

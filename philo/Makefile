@@ -6,7 +6,7 @@
 #    By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/06 14:26:02 by mkitano           #+#    #+#              #
-#    Updated: 2025/12/07 17:47:58 by mkitano          ###   ########.fr        #
+#    Updated: 2025/12/21 09:45:34 by mkitano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,10 @@ SRC_FILES = main.c \
 		utils.c \
 		parsing.c \
 		init.c \
-		safe_functions.c \
+		clean.c \
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
-OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o)) 
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 HEADERS = $(addprefix $(INCLUDE_DIR)/, philo.h)
 
 CC = cc
