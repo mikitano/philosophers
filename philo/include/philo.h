@@ -6,7 +6,7 @@
 /*   By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 16:00:18 by mkitano           #+#    #+#             */
-/*   Updated: 2025/12/21 09:45:07 by mkitano          ###   ########.fr       */
+/*   Updated: 2025/12/21 12:42:15 by mkitano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 
 # define INT_MAX 2147483647
 # define THINK_TIME_MAX 600
+# define CUT_THINK_TIME 200
+# define SILENCE_THINK_MIN 1
 
 # define RESET "\033[0m"
 # define RED "\033[0;31m"
@@ -32,6 +34,12 @@
 # define BLUE "\033[0;34m"
 # define CYAN "\033[0;36m"
 # define WHITE "\033[0;37m"
+
+# define MSG_EAT   "\033[0;32m🍝 is eating\033[0m"
+# define MSG_SLEEP "\033[0;34m😴 is sleeping\033[0m"
+# define MSG_THINK "\033[0;33m💭 is thinking\033[0m"
+# define MSG_FORK  "\033[0;37m🍴 has taken a fork\033[0m"
+# define MSG_DIED  "\033[0;31m💀 died\033[0m"
 
 typedef pthread_mutex_t	t_mutex;
 typedef struct s_philo	t_philo;
@@ -64,22 +72,6 @@ typedef struct s_philo
 	t_table		*table;
 }				t_philo;
 
-//typedef enum e_opcode {
-//	LOCK,
-//	UNLOCK,
-//	INIT,
-//	DESTROY,
-//	CREATE,
-//	JOIN,
-//	DETACH
-//}						t_opcode;
-
-//typedef struct s_fork
-//{
-//	t_mutex				fork;
-//	int					fork_id;
-//}						t_fork;
-
 long	ft_atol(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 
@@ -87,6 +79,9 @@ bool	parse_and_init(t_table *table, int ac, char **av, int i);
 void	data_init(t_table *table);
 
 time_t	time_ms(void);
+
+void	*philo_routine(void *data);
+void	*monitor_routine(void *data);
 
 void	clean_philos(t_philo *philos, int i);
 void	clean_forks(t_mutex *forks, int i);
