@@ -6,7 +6,7 @@
 /*   By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 16:07:22 by mkitano           #+#    #+#             */
-/*   Updated: 2025/12/21 10:49:21 by mkitano          ###   ########.fr       */
+/*   Updated: 2025/12/21 18:29:50 by mkitano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	sim_stop(t_table *table)
 		pthread_join(table->philos[i].thread_id, NULL);
 	if (table->philo_nbr > 1)
 		pthread_join(table->monitor, NULL);
-	clean_table(&table);
+	clean_table(table);
 }
 
 int	main(int ac, char **av)
@@ -57,12 +57,17 @@ int	main(int ac, char **av)
 	table = ft_calloc(1, sizeof(t_table));
 	if (!table)
 		return (1);
-	if (!parse_input(&table, ac, av, 0)
-		|| (!forks_init(&table)) || (!philo_init(&table)))
+	if (!parse_and_init(table, ac, av, 0)
+		|| (!forks_init(table)) || (!philo_init(table)))
 	{
 		free(table);
 		return (1);
 	}
 	if (!sim_start(table))
-		clean_table(&table);
+	{
+		clean_table(table);
+		return (1);
+	}
+	sim_stop(table);
+	return (0);
 }

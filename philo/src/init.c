@@ -6,12 +6,11 @@
 /*   By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 12:52:18 by mkitano           #+#    #+#             */
-/*   Updated: 2025/12/20 18:47:45 by mkitano          ###   ########.fr       */
+/*   Updated: 2025/12/21 19:20:50 by mkitano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
 
 bool	philo_init(t_table *table)
 {
@@ -46,7 +45,7 @@ bool	forks_init(t_table *table)
 	if (!table->forks)
 		return (false);
 	i = -1;
-	while (++i < table->forks)
+	while (++i < table->philo_nbr)
 	{
 		if (pthread_mutex_init(&table->forks[i], NULL) != 0)
 		{

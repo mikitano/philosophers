@@ -6,7 +6,7 @@
 /*   By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 09:49:27 by mkitano           #+#    #+#             */
-/*   Updated: 2025/12/21 12:41:38 by mkitano          ###   ########.fr       */
+/*   Updated: 2025/12/21 18:54:07 by mkitano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	eat_routine(t_philo *philo)
 		pthread_mutex_lock(philo->left_fork);
 		print_msg(philo, MSG_FORK, false);
 		pthread_mutex_lock(philo->right_fork);
-		print_msg(philo, MSG_FORK, false); //TODO
+		print_msg(philo, MSG_FORK, false);
 	}
 	else
 	{
@@ -81,7 +81,7 @@ void	*philo_routine(void *data)
 	pthread_mutex_lock(&philo->eat_lock);
 	philo->lst_meal_time = philo->table->start_sim;
 	pthread_mutex_unlock(&philo->eat_lock);
-	sync_start(philo->table->start_sim); //TODO
+	sync_start(philo->table->start_sim);
 	if (philo->table->philo_nbr == 1)
 	{
 		print_msg(philo, MSG_FORK, false);
@@ -90,7 +90,7 @@ void	*philo_routine(void *data)
 		return (NULL);
 	}
 	if (philo->id % 2 != 0)
-		think_routine(philo, true); //TODO
+		think_routine(philo, true);
 	while (!is_sim_end(philo->table))
 	{
 		eat_routine(philo);

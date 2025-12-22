@@ -6,7 +6,7 @@
 /*   By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 16:19:07 by mkitano           #+#    #+#             */
-/*   Updated: 2025/12/21 09:44:47 by mkitano          ###   ########.fr       */
+/*   Updated: 2025/12/21 16:09:28 by mkitano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static bool	is_space(char c)
 	return (false);
 }
 
-long	ft_atol(const char *str)
+long	ft_atol(char *str)
 {
 	long	result;
 

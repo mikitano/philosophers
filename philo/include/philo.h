@@ -6,7 +6,7 @@
 /*   By: mkitano <mkitano@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 16:00:18 by mkitano           #+#    #+#             */
-/*   Updated: 2025/12/21 12:42:15 by mkitano          ###   ########.fr       */
+/*   Updated: 2025/12/21 19:22:30 by mkitano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,12 @@
 
 # define RESET "\033[0m"
 # define RED "\033[0;31m"
-# define GREEN "\033[0;32m"
-# define YELLOW "\033[0;33m"
-# define BLUE "\033[0;34m"
-# define CYAN "\033[0;36m"
-# define WHITE "\033[0;37m"
 
-# define MSG_EAT   "\033[0;32m🍝 is eating\033[0m"
-# define MSG_SLEEP "\033[0;34m😴 is sleeping\033[0m"
-# define MSG_THINK "\033[0;33m💭 is thinking\033[0m"
-# define MSG_FORK  "\033[0;37m🍴 has taken a fork\033[0m"
-# define MSG_DIED  "\033[0;31m💀 died\033[0m"
+# define MSG_EAT   "\033[0;32mis eating 🍝\033[0m"
+# define MSG_SLEEP "\033[0;34mis sleeping 😴\033[0m"
+# define MSG_THINK "\033[0;33mis thinking 💭\033[0m"
+# define MSG_FORK  "\033[0;36mhas taken a fork🍴\033[0m"
+# define MSG_DIED  "\033[0;31mdied 💀\033[0m"
 
 typedef pthread_mutex_t	t_mutex;
 typedef struct s_philo	t_philo;
@@ -72,13 +67,13 @@ typedef struct s_philo
 	t_table		*table;
 }				t_philo;
 
-long	ft_atol(const char *str);
+long	ft_atol(char *str);
 void	*ft_calloc(size_t count, size_t size);
+time_t	time_ms(void);
 
 bool	parse_and_init(t_table *table, int ac, char **av, int i);
-void	data_init(t_table *table);
-
-time_t	time_ms(void);
+bool	philo_init(t_table *table);
+bool	forks_init(t_table *table);
 
 void	*philo_routine(void *data);
 void	*monitor_routine(void *data);
@@ -86,5 +81,9 @@ void	*monitor_routine(void *data);
 void	clean_philos(t_philo *philos, int i);
 void	clean_forks(t_mutex *forks, int i);
 void	clean_table(t_table *table);
+
+bool	is_sim_end(t_table *table);
+void	sync_start(time_t start);
+void	print_msg(t_philo *philo, const char *msg, bool is_monitor);
 
 #endif
