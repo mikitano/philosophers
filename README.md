@@ -72,51 +72,59 @@ typedef struct s_philo
 
 ## 📁 File Overview
 
-include/philo.h
+**include/philo.h**
 -  Main header file
 -  Structure definitions
 -  Function prototypes
 -  Required system headers
 -  Macros and ANSI colors for debugging
 
-src/main.c
+
+**src/main.c**
 -  Program entry point
 -  Argument validation
 -  Simulation startup
 
-src/parsing.c
+
+**src/parsing.c**
 -  Command-line argument parsing
 -  Safe numeric conversion
 -  Input validation
 
-src/init.c
+
+**src/init.c**
 -  Initialization of philosophers and forks
 -  Mutex setup
 -  Simulation timing initialization
 
-src/philo.c
--  Philosopher routine implementation
--  Life cycle:
--     thinking
--     taking forks
--     eating
--     sleeping
 
-src/monitor.c
+**src/philo.c**
+- Philosopher routine implementation
+- Life cycle:
+    - thinking
+    - taking forks
+    - eating
+    - sleeping
+
+
+**src/monitor.c**
 -  Monitoring thread
 -  Death detection
 -  Simulation termination control
 
-src/sim_utils.c
+
+**src/sim_utils.c**
 -  Time management utilities
 -  Thread-safe output
 -  Simulation helpers
 
-src/utils.c
+
+**src/utils.c**
 -  General utility functions
 -  Shared helpers
 
-src/clean.c
+
+**src/clean.c**
 -  Resource cleanup
 -  Mutex destruction
 -  Safe program termination
