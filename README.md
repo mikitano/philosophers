@@ -72,7 +72,7 @@ typedef struct s_philo
 
 ## 📁 File Overview
 
-include/philo.h**
+#### include/philo.h
 -  Main header file
 -  Structure definitions
 -  Function prototypes
