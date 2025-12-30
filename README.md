@@ -73,53 +73,53 @@ typedef struct s_philo
 ## 📁 File Overview
 
 include/philo.h
-    • Main header file
-    • Structure definitions
-    • Function prototypes
-    • Required system headers
-    • Macros and ANSI colors for debugging
+-  Main header file
+-  Structure definitions
+-  Function prototypes
+-  Required system headers
+-  Macros and ANSI colors for debugging
 
 src/main.c
-    • Program entry point
-    • Argument validation
-    • Simulation startup
+-  Program entry point
+-  Argument validation
+-  Simulation startup
 
 src/parsing.c
-    • Command-line argument parsing
-    • Safe numeric conversion
-    • Input validation
+-  Command-line argument parsing
+-  Safe numeric conversion
+-  Input validation
 
 src/init.c
-    • Initialization of philosophers and forks
-    • Mutex setup
-    • Simulation timing initialization
+-  Initialization of philosophers and forks
+-  Mutex setup
+-  Simulation timing initialization
 
 src/philo.c
-    • Philosopher routine implementation
-    • Life cycle:
-        • thinking
-        • taking forks
-        • eating
-        • sleeping
+-  Philosopher routine implementation
+-  Life cycle:
+-     thinking
+-     taking forks
+-     eating
+-     sleeping
 
 src/monitor.c
-    • Monitoring thread
-    • Death detection
-    • Simulation termination control
+-  Monitoring thread
+-  Death detection
+-  Simulation termination control
 
 src/sim_utils.c
-    • Time management utilities
-    • Thread-safe output
-    • Simulation helpers
+-  Time management utilities
+-  Thread-safe output
+-  Simulation helpers
 
 src/utils.c
-    • General utility functions
-    • Shared helpers
+-  General utility functions
+-  Shared helpers
 
 src/clean.c
-    • Resource cleanup
-    • Mutex destruction
-    • Safe program termination
+-  Resource cleanup
+-  Mutex destruction
+-  Safe program termination
 
 ---
 
@@ -154,30 +154,30 @@ Example
 
 ## 🛑 Rules & Constraints
 
-• Each philosopher is represented by a thread
-• Each fork is protected by a mutex
-• No data races
-• No deadlocks
-• Output is synchronized using a write mutex
-• The simulation stops immediately when a philosopher dies
+- Each philosopher is represented by a **thread**
+- Each fork is protected by a **mutex**
+- No **data races**
+- No **deadlocks**
+- Output is synchronized using a write mutex
+- The simulation stops immediately when a philosopher dies
 
 ---
 
 ## 📚 Concepts Covered
 
-• Multithreading with pthread
-• Mutex-based synchronization
-• Deadlock prevention
-• Shared state protection
-• Accurate time handling
-• Safe input parsing
-• Resource cleanup in concurrent systems
+- Multithreading with pthread
+- Mutex-based synchronization
+- Deadlock prevention
+- Shared state protection
+- Accurate time handling
+- Safe input parsing
+- Resource cleanup in concurrent systems
 
 ---
 
 ## 🧪 Tested Environment
 
-• Linux
-• macOS
-• Compiler: cc
-• Flags: -Wall -Wextra -Werror
+- Linux
+- macOS
+- Compiler: cc
+- Flags: -Wall -Wextra -Werror
