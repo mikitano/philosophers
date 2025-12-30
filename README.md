@@ -30,10 +30,12 @@ philo/
 │   └── utils.c
 │
 └── Makefile
-🧩 Core Structures
+
+---
+
+## 🧩 Core Structures
 t_table
-c
-Copiar código
+```text
 typedef struct s_table
 {
     pthread_t   monitor;
@@ -49,156 +51,4 @@ typedef struct s_table
     t_mutex     *forks;
     t_mutex     write_lock;
 }   t_table;
-Global simulation state
 
-Shared timing parameters
-
-Fork mutex array
-
-Simulation control and synchronization
-
-t_philo
-c
-Copiar código
-typedef struct s_philo
-{
-    int         id;
-    pthread_t   thread_id;
-    t_mutex     *left_fork;
-    t_mutex     *right_fork;
-    long        meals_count;
-    t_mutex     eat_lock;
-    time_t      last_meal_time;
-    t_table     *table;
-}   t_philo;
-Represents a single philosopher
-
-Holds fork references
-
-Tracks last meal time and meals count
-
-Linked to the shared table structure
-
-📁 File Overview
-main.c
-Entry point of the program
-
-Argument validation
-
-Simulation startup
-
-parsing.c
-Command-line argument parsing
-
-Safe numeric conversion
-
-Input validation according to the subject
-
-init.c
-Initialization of philosophers and forks
-
-Mutex setup
-
-Simulation timing initialization
-
-philo.c
-Philosopher routine
-
-Life cycle:
-
-thinking
-
-taking forks
-
-eating
-
-sleeping
-
-Fork locking strategy to avoid deadlocks
-
-monitor.c
-Dedicated monitoring thread
-
-Checks philosopher death conditions
-
-Ends simulation when a philosopher dies or meal limit is reached
-
-sim_utils.c
-Time management utilities
-
-Thread-safe printing
-
-Simulation helpers
-
-utils.c
-General helper functions
-
-Shared utilities across the project
-
-clean.c
-Resource cleanup
-
-Mutex destruction
-
-Safe simulation termination
-
-⚙️ Compilation
-bash
-Copiar código
-make
-Other rules:
-
-bash
-Copiar código
-make clean
-make fclean
-make re
-▶️ Usage
-bash
-Copiar código
-./philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]
-Example
-bash
-Copiar código
-./philo 5 800 200 200
-With meal limit:
-
-bash
-Copiar código
-./philo 5 800 200 200 7
-🛑 Rules & Constraints
-Each philosopher is a thread
-
-Each fork is protected by a mutex
-
-No data races
-
-No deadlocks
-
-Output is synchronized using a write mutex
-
-Simulation stops immediately when a philosopher dies
-
-📚 Concepts Covered
-Multithreading with pthread
-
-Mutex-based synchronization
-
-Deadlock prevention strategies
-
-Shared state protection
-
-Accurate time handling
-
-Safe input parsing
-
-Resource cleanup in concurrent systems
-
-🧪 Tested Environment
-Linux
-
-macOS
-
-Compiler: cc
-
-Flags: -Wall -Wextra -Werror
