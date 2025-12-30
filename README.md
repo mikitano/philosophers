@@ -79,22 +79,22 @@ include/philo.h**
 -  Required system headers
 -  Macros and ANSI colors for debugging
  
-### src/main.c
+#### src/main.c
 -  Program entry point
 -  Argument validation
 -  Simulation startup
  
-### src/parsing.c
+#### src/parsing.c
 -  Command-line argument parsing
 -  Safe numeric conversion
 -  Input validation
  
-### src/init.c
+#### src/init.c
 -  Initialization of philosophers and forks
 -  Mutex setup
 -  Simulation timing initialization
 
-### src/philo.c
+#### src/philo.c
 - Philosopher routine implementation
 - Life cycle:
     - thinking
@@ -102,21 +102,21 @@ include/philo.h**
     - eating
     - sleeping
 
-### src/monitor.c
+#### src/monitor.c
 -  Monitoring thread
 -  Death detection
 -  Simulation termination control
 
-### src/sim_utils.c
+#### src/sim_utils.c
 -  Time management utilities
 -  Thread-safe output
 -  Simulation helpers
 
-### src/utils.c
+#### src/utils.c
 -  General utility functions
 -  Shared helpers
 
-### src/clean.c
+#### src/clean.c
 -  Resource cleanup
 -  Mutex destruction
 -  Safe program termination
