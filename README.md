@@ -3,7 +3,7 @@
 [![Language](https://img.shields.io/badge/language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
 [![School](https://img.shields.io/badge/42-School-black.svg)]()
 [![Threads](https://img.shields.io/badge/threads-pthreads-informational.svg)]()
-[![Status](https://img.shields.io/badge/status-in_progress-success.svg)]()
+![Status](https://img.shields.io/badge/status-finished-success.svg)()
 [![Norminette](https://img.shields.io/badge/norminette-OK-brightgreen.svg)]()
 
 This project is an implementation of the classic **Dining Philosophers Problem**, developed as part of the **42 School** curriculum.
